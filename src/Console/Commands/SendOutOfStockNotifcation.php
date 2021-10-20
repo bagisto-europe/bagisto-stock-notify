@@ -56,7 +56,7 @@ class SendOutOfStockNotifcation extends Command
             ->where('product_inventories.qty', '=<', core()->getConfigData('catalog.inventory.notifications.min-stock'))
             ->orderBy('product_flat.id', 'DESC')->groupBy('product_flat.product_id', 'product_flat.locale', 'product_flat.channel')->exists();
 
-        if($query) {
+        if ($query) {
             $admins = Admin::all();
 
             foreach($admins as $admin) {
