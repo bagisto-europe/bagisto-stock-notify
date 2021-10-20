@@ -26,6 +26,17 @@ class StockNotifyServiceProvider extends ServiceProvider
             __DIR__.'/../Resources/views/email' => resource_path('views/stocknotify'),
         ]);
 
+    }
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerConfig();
+
         $this->app->booted(function () {
 
             if (core()->getConfigData('catalog.inventory.notifications.status')) {
@@ -51,16 +62,6 @@ class StockNotifyServiceProvider extends ServiceProvider
             }
 
         });
-    }
-
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerConfig();
     }
 
     /**
