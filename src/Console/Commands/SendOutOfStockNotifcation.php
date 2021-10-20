@@ -43,24 +43,26 @@ class SendOutOfStockNotifcation extends Command
      */
     public function handle()
     {
-        $query = DB::table('product_flat')
-            ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
-            ->leftJoin('product_inventories', 'product_flat.product_id', '=', 'product_inventories.product_id')
-            ->select(
-                'product_flat.product_id',
-                DB::raw('SUM(DISTINCT ' . DB::getTablePrefix() . 'product_inventories.qty) as quantity'),
-                'product_flat.locale',
-                'product_flat.channel'
-            )
-            ->where('product_flat.status', '=', 1)
-            ->where('product_inventories.qty', '=<', core()->getConfigData('catalog.inventory.notifications.min-stock'))
-            ->orderBy('product_flat.id', 'DESC')->groupBy('product_flat.product_id', 'product_flat.locale', 'product_flat.channel')->exists();
-
-        if ($query) {
-            $admins = Admin::all();
-
-            foreach($admins as $admin) {
-                return Mail::to($admin->email)->send(new OutOfStock());
+        if (core()->getConfigData('catalog.inventory.notifications.status')) {        
+            $query = DB::table('product_flat')
+                ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
+                ->leftJoin('product_inventories', 'product_flat.product_id', '=', 'product_inventories.product_id')
+                ->select(
+                    'product_flat.product_id',
+                    DB::raw('SUM(DISTINCT ' . DB::getTablePrefix() . 'product_inventories.qty) as quantity'),
+                    'product_flat.locale',
+                    'product_flat.channel'
+                    )
+                ->where('product_flat.status', '=', 1)
+                ->where('product_inventories.qty', '=<', core()->getConfigData('catalog.inventory.notifications.min-stock'))
+                ->orderBy('product_flat.id', 'DESC')->groupBy('product_flat.product_id', 'product_flat.locale', 'product_flat.channel')->exists();
+                
+            if ($query) {
+                $admins = Admin::all();
+                    
+                foreach($admins as $admin) {
+                    return Mail::to($admin->email)->send(new OutOfStock());
+                }
             }
         }
     }
