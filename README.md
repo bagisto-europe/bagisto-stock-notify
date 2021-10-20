@@ -10,9 +10,9 @@
 
 ## Topics
 1. [Introduction](#introduction)
-2. [Requirements](#requirements)
 2. [Installation](#installation)
-3. [Configuration](#configuration)
+3. [Requirements](#requirements)
+4. [Configuration](#configuration)
 
 ## Introduction
 With this package you can keep an eye on your inventory. The way it works is simple.  
