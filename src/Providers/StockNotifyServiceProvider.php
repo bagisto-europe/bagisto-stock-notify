@@ -27,9 +27,10 @@ class StockNotifyServiceProvider extends ServiceProvider
         ]);
 
         $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
 
             if (core()->getConfigData('catalog.inventory.notifications.status')) {
+                $schedule = $this->app->make(Schedule::class);
+
                 if (core()->getConfigData('catalog.inventory.notifications.schedule') == "hourly") {
                     $schedule->command(SendOutOfStockNotifcation::class)->hourly()->runInBackground();
                 }
