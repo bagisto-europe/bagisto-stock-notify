@@ -1,0 +1,46 @@
+{
+    "name": "bagisto-eu/stock-notify",
+    "description": "Receive email reports for low inventory stock",
+    "keywords": [
+        "bagisto",
+        "ecommerce",
+        "inventory",
+        "mail",
+        "export",
+        "laravel"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bagisto Europe",
+            "email": "info@bagisto.eu",
+            "homepage": "https://bagisto.eu"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bagisto\\StockNotify\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bagisto\\StockNotify\\Providers\\StockNotifyServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/bagisto-europe/stock-notify/issues",
+        "forum": "https://forums.bagisto.com",
+        "source": "https://github.com/bagisto-europe/stock-notify",
+        "docs": "https://github.com/bagisto-europe/stock-notify"
+    }
+}
