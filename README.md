@@ -4,8 +4,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.0-blue.svg">
-  <img src="https://img.shields.io/badge/License-EULA-blue.svg">
+  <img alt="Github version" src="https://poser.pugx.org/bagisto-europe/stock-notify/v">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/bagisto-europe/stock-notify">
 </p>
 
 ## Topics
