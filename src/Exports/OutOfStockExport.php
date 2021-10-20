@@ -5,7 +5,6 @@ namespace Bagisto\StockNotify\Exports;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Facades\DB;
 
-use Webkul\Product\Models\ProductFlat;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -21,7 +20,6 @@ class OutOfStockExport implements ShouldAutoSize, FromQuery, WithHeadings, Respo
     {
         return DB::table('product_flat')
         ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
-        ->leftJoin('attribute_families', 'products.attribute_family_id', '=', 'attribute_families.id')
         ->leftJoin('product_inventories', 'product_flat.product_id', '=', 'product_inventories.product_id')
         ->leftJoin('inventory_sources as warehouse', 'product_inventories.inventory_source_id', '=', 'warehouse.id')
         ->select(

@@ -22,6 +22,10 @@ class StockNotifyServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'stocknotify');
 
+        $this->publishes([
+            __DIR__.'/../Resources/views/email' => resource_path('views/stocknotify'),
+        ]);
+
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
 
