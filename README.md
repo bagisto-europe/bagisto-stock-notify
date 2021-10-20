@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  [![Latest Stable Version](http://poser.pugx.org/bagisto-eu/stock-notify/v)](https://packagist.org/packages/bagisto-eu/stock-notify)
+  <img alt="Github version" src="http://poser.pugx.org/bagisto-eu/stock-notify/v">
   <img alt="GitHub license" src="https://img.shields.io/github/license/bagisto-europe/stock-notify">
 </p>
 
