@@ -3,6 +3,7 @@
 return [
     'admin' => [
         'section-title' => 'Stock Notification',
+        'section-info'  => 'Set the interval and product limit for inventory update alerts',
         'status'        => 'Send a notification when products reach the threshold',
         'schedule'      => 'Schedule notification',
         'schedule-info' => 'When should the notification be sent?',

@@ -4,6 +4,7 @@ return [
     [
         'key' => 'catalog.inventory.notifications',
         'name' => 'stocknotify::app.admin.section-title',
+        'info'   => 'stocknotify::app.admin.section-info',
         'sort' => 2,
         'fields' => [
             [
@@ -15,6 +16,7 @@ return [
                 'name'          => 'schedule',
                 'title'         => 'stocknotify::app.admin.schedule',
                 'info'          => 'stocknotify::app.admin.schedule-info',
+                'depends'       => 'status',
                 'type'          => 'select',
                 'options'       => [
                     [
@@ -28,12 +30,14 @@ return [
                         'value' => 'weekly',
                     ]
                 ],
+                'default' => 'daily',
                 'channel_based' => false,
             ], [
                 'name'          => 'min-stock',
                 'title'         => 'stocknotify::app.admin.min-stock',
+                'depends'       => 'status',
                 'type'          => 'text',
-                'default_value' => 0,
+                'default'       => 0,
                 'channel_based' => false,
             ]
         ]
